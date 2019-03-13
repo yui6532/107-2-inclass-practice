@@ -25,3 +25,9 @@ class(a)
 
 ```
 
+```{r}
+aVector <- c(5,6,7)
+a2Vector <- c(5L,6L,7L)
+```
+
+

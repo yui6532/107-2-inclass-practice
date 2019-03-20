@@ -258,19 +258,83 @@ cat(dialogue, sep=&quot;\n&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYUxvZ2ljYWwgPC0gYyhULFRSVUUsRixGQUxTRSxGQUxTRSlcbmNsYXNzKGFMb2dpY2FsKVxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYUxvZ2ljYWwgPC0gYyhULFRSVUUsRixGQUxTRSxGQUxTRSlcbmNsYXNzKGFMb2dpY2FsKVxuYGBgIn0= -->
 <pre class="r"><code>aLogical &lt;- c(T,TRUE,F,FALSE,FALSE)
-class(aLogical)
-</code></pre>
+class(aLogical)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibG9naWNhbFwiXG4ifQ== -->
-<pre><code>[1] &quot;logical&quot;</code></pre>
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmlydGhwbGFjZTwtYygn5Y+w5YyX5biCJywn5Y+w5YyX5biCJywn5Y+w5Lit5biCJywn5Y+w5Lit5biCJywn5Y+w5Lit5biCJylcbmE8LWZhY3RvcihiaXJ0aHBsYWNlKVxuYVxudHlwZW9mKGEpXG5hcy5pbnRlZ2VyKGEpXG5gYGAifQ== -->
+<pre class="r"><code>birthplace&lt;-c('台北市','台北市','台中市','台中市','台中市')
+a&lt;-factor(birthplace)
+a
+typeof(a)
+as.integer(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5pbnN0YWxsLnBhY2thZ2VzKCdsdWJyaWRhdGUnKVxubGlicmFyeSgnbHVicmlkYXRlJylcbmBgYCJ9 -->
+<pre class="r"><code>
+install.packages('lubridate')
+library('lubridate')</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgnbHVicmlkYXRlJylcbmBgYCJ9 -->
+<pre class="r"><code>library('lubridate')</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZHRPYmplY3Q8LXltZF9obXMoXCIxOTcwLTAxLTAxIDAwOjAyOjUzXCIpIFxuZHRPYmplY3RWZWN0b3IgPC0geW1kX2htcyhcbiAgYyhcIjE5NzAtMDEtMDEgMDA6MDI6NTNcIixcbiAgICBcIjE5ODAtMDItMTEgMTE6MjU6MjJcIilcbilcbmR0T2JqZWN0XG5gYGAifQ== -->
+<pre class="r"><code>dtObject&lt;-ymd_hms(&quot;1970-01-01 00:02:53&quot;) 
+dtObjectVector &lt;- ymd_hms(
+  c(&quot;1970-01-01 00:02:53&quot;,
+    &quot;1980-02-11 11:25:22&quot;)
+)
+dtObject</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiMTk3MC0wMS0wMSAwMDowMjo1MyBVVENcIlxuIn0= -->
+<pre><code>[1] &quot;1970-01-01 00:02:53 UTC&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZHRPYmplY3RWZWN0b3JcbmBgYCJ9 -->
+<pre class="r"><code>dtObjectVector</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiMTk3MC0wMS0wMSAwMDowMjo1MyBVVENcIiBcIjE5ODAtMDItMTEgMTE6MjU6MjIgVVRDXCJcbiJ9 -->
+<pre><code>[1] &quot;1970-01-01 00:02:53 UTC&quot; &quot;1980-02-11 11:25:22 UTC&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoZHRPYmplY3QpXG5gYGAifQ== -->
+<pre class="r"><code>class(dtObject)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUE9TSVhjdFwiIFwiUE9TSVh0XCIgXG4ifQ== -->
+<pre><code>[1] &quot;POSIXct&quot; &quot;POSIXt&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHlwZW9mKGR0T2JqZWN0KVxuYGBgIn0= -->
+<pre class="r"><code>typeof(dtObject)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZG91YmxlXCJcbiJ9 -->
+<pre><code>[1] &quot;double&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMuaW50ZWdlcihkdE9iamVjdClcbmBgYCJ9 -->
+<pre class="r"><code>as.integer(dtObject)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE3M1xuIn0= -->
+<pre><code>[1] 173</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMuZG91YmxlKGR0T2JqZWN0KVxuYGBgIn0= -->
+<pre class="r"><code>as.double(dtObject)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE3M1xuIn0= -->
+<pre><code>[1] 173</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTktMDMtMjAiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQpwbG90KGNhcnMpDQpgYGANCg0KYGBge3J9DQpkaWFsb2d1ZSA8LSBjKCflsI/mmI7oqqrvvJoi5piO5aSp5LiN55So5LiK6Kqy44CCIicsDQogICAgICAgICAgICAgICAn5bCP6Iqx6Kqq77yaIuecn+eahOWXju+8nyInKQ0KDQpjYXQoZGlhbG9ndWUsIHNlcD0iXG4iKQ0KYGBgDQpgYGB7cn0NCmFMb2dpY2FsIDwtIGMoVCxUUlVFLEYsRkFMU0UsRkFMU0UpDQpjbGFzcyhhTG9naWNhbCkNCmBgYA0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTktMDMtMjAiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KYGBge3J9DQpwbG90KGNhcnMpDQpgYGANCg0KYGBge3J9DQpkaWFsb2d1ZSA8LSBjKCflsI/mmI7oqqrvvJoi5piO5aSp5LiN55So5LiK6Kqy44CCIicsDQogICAgICAgICAgICAgICAn5bCP6Iqx6Kqq77yaIuecn+eahOWXju+8nyInKQ0KDQpjYXQoZGlhbG9ndWUsIHNlcD0iXG4iKQ0KYGBgDQpgYGB7cn0NCmFMb2dpY2FsIDwtIGMoVCxUUlVFLEYsRkFMU0UsRkFMU0UpDQpjbGFzcyhhTG9naWNhbCkNCmBgYA0KYGBge3J9DQpiaXJ0aHBsYWNlPC1jKCflj7DljJfluIInLCflj7DljJfluIInLCflj7DkuK3luIInLCflj7DkuK3luIInLCflj7DkuK3luIInKQ0KYTwtZmFjdG9yKGJpcnRocGxhY2UpDQphDQp0eXBlb2YoYSkNCmFzLmludGVnZXIoYSkNCmBgYA0KDQpgYGB7cn0NCg0KaW5zdGFsbC5wYWNrYWdlcygnbHVicmlkYXRlJykNCmxpYnJhcnkoJ2x1YnJpZGF0ZScpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KCdsdWJyaWRhdGUnKQ0KYGBgDQpgYGB7cn0NCmR0T2JqZWN0PC15bWRfaG1zKCIxOTcwLTAxLTAxIDAwOjAyOjUzIikgDQpkdE9iamVjdFZlY3RvciA8LSB5bWRfaG1zKA0KICBjKCIxOTcwLTAxLTAxIDAwOjAyOjUzIiwNCiAgICAiMTk4MC0wMi0xMSAxMToyNToyMiIpDQopDQpkdE9iamVjdA0KZHRPYmplY3RWZWN0b3INCmNsYXNzKGR0T2JqZWN0KQ0KdHlwZW9mKGR0T2JqZWN0KQ0KYXMuaW50ZWdlcihkdE9iamVjdCkNCmFzLmRvdWJsZShkdE9iamVjdCkNCmBgYA0KDQo=</div>
 
 
 

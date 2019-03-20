@@ -1,0 +1,54 @@
+---
+title: "2019-03-20"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+```{r}
+dialogue <- c('小明說："明天不用上課。"',
+               '小花說："真的嗎？"')
+
+cat(dialogue, sep="\n")
+```
+```{r}
+aLogical <- c(T,TRUE,F,FALSE,FALSE)
+class(aLogical)
+```
+```{r}
+birthplace<-c('台北市','台北市','台中市','台中市','台中市')
+a<-factor(birthplace)
+a
+typeof(a)
+as.integer(a)
+```
+
+```{r}
+
+install.packages('lubridate')
+library('lubridate')
+```
+
+```{r}
+library('lubridate')
+```
+```{r}
+dtObject<-ymd_hms("1970-01-01 00:02:53") 
+dtObjectVector <- ymd_hms(
+  c("1970-01-01 00:02:53",
+    "1980-02-11 11:25:22")
+)
+dtObject
+dtObjectVector
+class(dtObject)
+typeof(dtObject)
+as.integer(dtObject)
+as.double(dtObject)
+```
+

@@ -1,0 +1,105 @@
+---
+title: "2019-03-27"
+output: html_document
+---
+
+```{r}
+library('lubridate')
+Sys.timezone()
+```
+
+```{r}
+twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+LondonDateTime <- with_tz(twDateTime,tzone="Europe/London")
+twDateTime
+LondonDateTime
+typeof(twDateTime)
+class(twDateTime)
+levels(twDateTime)
+```
+
+
+```{r}
+twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+LondonDateTime <- with_tz(twDateTime,tzone="Europe/London")
+twDateTime
+LondonDateTime
+typeof(twDateTime)
+class(twDateTime)
+as.double(twDateTime)
+as.double(LondonDateTime)
+```
+
+```{r}
+dtObject<-ymd_hms("2018-09-11 00:02:53")
+dtObject2<-mdy("March 3,2019")
+dtObject3<-hms("00:02:53")
+class(dtObject3)
+class(dtObject2)
+typeof(dtObject3)
+```
+
+```{r}
+a <- c(1, 5, -3)
+b <- c(0.5, 12, 2)
+aL <- c(1L, 5L, -3L)
+bL <- c(-2L, -4L, 8L)
+a + b
+aL -bL
+class(a + b)
+class(aL -bL)
+
+c <- 4
+
+c+a
+typeof(a)
+typeof(c)
+```
+
+```{r}
+Date<-ymd("2018-09-11")
+Date2<-ymd("2018-09-20")
+Date2-Date
+class(Date2-Date)
+typeof(Date2-Date)
+Date+1
+as.integer(Date2-Date)
+as.numeric(Date2-Date)
+as.difftime(Date2-Date)
+```
+```{r}
+startingDate <- ymd("2000-02-17")
+startingDate + years(1)
+startingDate + dyears(1)
+
+ymd("2000-02-01") -> startingDate
+ymd("2019-08-11") -> endingDate
+endingDate - startingDate
+```
+```{r}
+x4 <- c(1,5,8)
+y4 <- c(5,8)
+
+x4 %in% y4
+
+x5 <- c("台北市","新北市","高雄市")
+y5 <- c("台北市","新北市")
+
+y5 %in% x5
+```
+
+```{r}
+x2 <- c(1,NA,3/0)
+y2 <- c(1,NA,4/0)
+
+x2 == y2
+
+x3 <- c(NA,"小花")
+y3 <- c(NA,"小華")
+
+is.na(x2)
+
+0/0
+3/0
+```
+

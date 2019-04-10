@@ -1,0 +1,106 @@
+---
+title: '2019-04-10'
+output: html_document
+---
+
+
+篩選可使用subset()函數
+
+```{r}
+library(stringr)
+course <- c("個體經濟學","投資學","總體經濟學")
+str_subset(course,"經濟學")
+str_detect(course,"經濟學")
+```
+
+str_sub函數:start gives the position of the first character (defaults to first)-->開頭的位置數
+, end gives the position of the last (defaults to last character)-->結尾的位置數
+
+```{r}
+studentID<-c(
+  '410177115','410176080','410174233','410177011','410182045','410176014')
+?str_sub
+str_sub(studentID, 2, 4)
+str_sub(studentID, 5, 6)
+
+```
+
+```{r}
+month <- c("3","4","2")
+day <- c("11","5","7")
+char1 <- c("月","月","月")
+char2 <- c("日","日","日")
+month
+char1
+day 
+char2
+str_c(month,char1,day,char2)
+str_c(month,c("月"),day,c("日"))
+str_c(month,"月",day,"日")
+
+
+```
+
+```{r}
+dates <- c("3-11", "4-5",  "2-7")
+str_split(dates,"-")
+dates
+str_replace(dates,"-","月")
+```
+
+```{r}
+library(readr)
+githubData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/githubData.csv")
+username <- githubData$`GitHub username`[11:16]
+reponame <- githubData$`GitHub repo name`[11:16]
+
+a <- str_c("https://github.com/",username,"/",reponame)
+b <- paste("https://github.com/",username,"/",reponame,sep="")
+class(a)
+class(b)
+a
+b
+```
+
+```{r}
+library(readr)
+filmVotingData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/%E7%AC%AC%E4%B8%89%E5%B1%86%E7%B6%93%E6%BF%9F%E6%92%AD%E5%AE%A2%E7%AB%B6%E8%B3%BD%E5%8F%83%E8%B3%BD%E4%BD%9C%E5%93%81%E6%8A%95%E7%A5%A8%E7%B5%90%E6%9E%9C%E6%A8%A3%E6%9C%AC%20-%20Sheet1.csv")
+birthday<-filmVotingData$`出生西元年月日（驗證本人用）`
+head(birthday)
+year<-str_sub(birthday,1,4)
+month<-str_sub(birthday,5,6)
+date<-str_sub(birthday,7,8)
+bday<-str_c("西元",year,"年",month,"月",date,"日")
+head(bday)
+```
+
+```{r}
+民國年月<-c("099/01","099/02","099/03")
+a <- str_sub(民國年月,2,3)
+b <- str_sub(民國年月,4,6)
+c <- as.integer(a)+1911
+西元年月<- str_c(c,b)
+西元年月
+
+
+```
+
+```{r}
+民國年月<-c("099/01","099/02","099/03")
+a <- str_sub(民國年月,2,3)
+b <- str_sub(民國年月,5,6)
+c <- as.integer(a)+1911
+西元年月<- str_c("西元",c,"年",b,"月")
+西元年月
+```
+
+```{r}
+b2<-list(
+  第一個="a",
+  第二個="b",
+  第三個=c(1:10),
+  第四個=TRUE)
+typeof(b2)
+b2
+```
+

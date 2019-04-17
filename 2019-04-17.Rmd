@@ -1,0 +1,124 @@
+---
+title: '2019-04-17'
+output: html_document
+---
+
+```{r}
+plasticContainer <- list(           # plasticContainer :list
+  greenBox=c("paper","scissor"),    # greenBox,redBox,blueBox -->c() :atomic vector
+  redBox=c(1,3,2.5),               
+  blueBox=c(TRUE,FALSE,TRUE,TRUE)
+)
+```
+
+```{r}
+plasticContainer[["greenBox"]] 
+plasticContainer[[1]]
+
+a <- plasticContainer[["greenBox"]] 
+a[[1]]
+```
+
+```{r}
+a <- plasticContainer[["greenBox"]] 
+a[[1]]
+```
+```{r}
+成績單 <- c(
+  個經=90,
+  總經=77,
+  統計=88
+)
+
+成績單[[1]]
+成績單[["個經"]]
+```
+
+```{r}
+studentRecord <-
+  list(
+    學號="410073058",
+    姓名="王小明",
+    性別="男",
+    學年平均成績=list(
+      一年級=88,
+      二年級=90.3,
+      三年級=92,
+      四年級=95
+    )
+  )
+
+studentRecord["姓名"]
+studentRecord[["姓名"]]
+a <- studentRecord[["學年平均成績"]]
+a[["三年級"]]
+```
+
+```{r}
+plasticContainer[c("greenBox","redBox")] 
+plasticContainer[c(1,2)]
+```
+
+```{r}
+extract1 <- plasticContainer["greenBox"]
+extract1
+                   #### extract1的屬性是list,不是character ####
+                   # extract1-->在plasticContainer 中'指出' greenBox 
+                   
+                   # [] 可想成只是'指出'想抽出的資料
+                   # [[]] 可想成把資料整個抽出來
+
+extract1[[1]]   #在plasticContainer 中把 greenBox 抽出
+
+extract1[[1]][[1]]   #在greenBox 中把 paper 抽出
+extract1[1][[1]]    #((可推出和extract1[[1]]結果一樣))
+
+extract2 <- plasticContainer[["greenBox"]]
+extract2            #### extract2的屬性是character ####
+                    # extract2-->在plasticContainer 中把 greenBox 抽出
+
+extract2[[1]]
+
+```
+
+```{r}
+class(extract1[1])
+class(extract1[[1]])
+class(extract2)
+class(extract1)
+```
+```{r}
+install.packages("httr")
+install.packages("stringr")
+```
+
+```{r}
+
+your_github_username <- "yui6532"
+your_practice_reponame <- "107-2-inclass-practice"
+library(httr)
+library(stringr)
+str_replace_all(
+  "https://api.github.com/repos/:owner/:repo/commits",
+  c(
+    ":owner"=your_github_username,
+    ":repo"=your_practice_reponame
+    )
+  ) -> commitCheckStatement
+commitCheck <- content(GET(commitCheckStatement))
+
+commitCheck
+```
+
+```{r}
+library(readr)
+filmVotingData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/podcastcompetition3.csv")
+str_replace(filmVotingData$請選擇你最喜歡的影片二部,", by"," by") -> favoriteTwo
+birthday <- filmVotingData$`出生西元年月日（驗證本人用）`
+timeStamp <- filmVotingData$Timestamp
+```
+
+```{r}
+logiCorrect <- str_length(birthday)==8
+```
+

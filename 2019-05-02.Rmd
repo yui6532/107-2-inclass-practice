@@ -1,0 +1,86 @@
+---
+title: '2019-05-08'
+output: html_document
+---
+
+```{r}
+#2 list
+
+compoundObject <- c(1,"hello",TRUE)
+compoundObject <- list(
+  1,"hello",TRUE
+)
+
+class(compoundObject[[1]])
+
+```
+
+```{r}
+#3 UTC與時區
+
+library(lubridate)
+load("submitTime.Rda")
+nytime <- mdy_hms(submitTime,tz="America/New_York")
+nytime <- as.character(nytime)
+head(nytime)
+
+mdy_hms(submitTime)-> submitTime1
+with_tz(submitTime1,tzone = "America/New_York") -> nyTime
+as.character(nyTime) -> nyTime
+head(nyTime)
+
+
+
+nytime <- mdy_hms(submitTime,tz="America/New_York")
+head(nytime)
+mdy_hms(submitTime)-> submitTime1
+head(submitTime1)
+
+```
+
+```{r}
+#51
+
+library(stringr)
+sample(99:103,15,replace = T)-> yy
+sample(1:12,replace=T)-> mm
+str_c("民國",str_pad(yy,3,"left","0"),"年",mm,"月") -> twDates
+
+twDates2 <- str_sub(twDates,3,7)
+twDates2
+
+
+str_replace(twDates,"民國","") -> twDates2
+str_replace(twDates2,"月","") -> twDates2  
+twDates2
+
+```
+
+```{r}
+
+#71
+
+load("sampledTranscriptData.Rda")
+names(sampledTranscriptData) <- 
+  c('學號','學期成績','學分數','學年','學期','必選修類別（必／選／通）','系級','科目名稱','年級','學屆')
+
+a <- sampledTranscriptData$科目名稱 == "科目204" 
+b <- sampledTranscriptData$學期成績 
+c <- sum((a==1)&(b<60))
+d <- sum(a==1)
+failRate <- c/d
+failRate
+
+```
+
+```{r}
+#74
+
+#unique(x): 將x裡面重複的資料拿掉
+
+a <- (sampledTranscriptData$系碼!="73")&(sampledTranscriptData$學系=="經濟學系")
+changeMajorStudent <- unique(sampledTranscriptData$學號[a])
+
+changeMajorStudent
+```
+

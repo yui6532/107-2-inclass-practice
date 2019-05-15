@@ -1,0 +1,129 @@
+---
+title: '2019-05-15'
+output: html_document
+---
+```{r}
+StuList <- list(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuList 
+
+class(StuDF$姓名)
+```
+
+```{r}
+StuDF <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuDF 
+
+class(StuDF$姓名)
+
+StuDF$姓名 <- as.character(StuDF$姓名)
+class(StuDF$姓名)
+```
+
+```{r}
+class(StuList)
+as.data.frame(StuList) -> StuDF3
+
+class(StuDF3)
+StuDF3
+as.data.frame(StuList,stringsAsFactors = F) -> StuDF4
+class(StuDF4)
+StuDF4
+```
+
+```{r}
+b <- list(
+  元素1=1,
+  元素2="Hello",
+  元素3=TRUE
+)
+
+b[[3]] <- FALSE
+b[[5]] <- 7
+b
+```
+
+```{r}
+b <- list(
+  元素1=1,
+  元素2="Hello",
+  元素3=TRUE
+)
+
+
+
+
+
+
+b[[5]] <- "新元素"
+names(b) <- c("元素1","元素2","元素3",NA,"新元素")
+b
+```
+
+```{r}
+library(readr)
+exData3 <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/exData3.csv",
+                    col_types = cols(
+                      匯率 = col_number(),
+                      期間 = col_character()))
+
+
+#7.6.1 取出「期間」變數轉成date class
+
+
+library(lubridate)
+exData3$期間 <- ymd(exData3$期間)
+
+#增加一個「isAsiaCrisis」的logical變數，其值為TRUE若「期間」介於1997-06-01到1998-12-01（含前後）
+
+exData3$isAsiaCrisis <- (exData3$期間>=ymd("1997-06-01"))&(exData3$期間<=ymd("1998-12-01"))
+
+class(exData3$isAsiaCrisis)
+exData3
+```
+
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+```
+
+```{r}
+transcriptDataFinal
+a <- transcriptDataFinal$學號 == "92aS67fee"
+transcriptDataFinal[a,]
+class(transcriptDataFinal)
+```
+
+```{r}
+f <- function(x,.alpha){
+  a <- x+.alpha
+  return(a) 
+}
+
+f(3,5)
+```
+
+```{r}
+Supply <- function(a,b,p){
+  o <- a+b*p
+  return(o)
+}
+
+Supply(1,2,3)
+```
+```{r}
+demand <- function(c,d,p){
+  o <- c-d*p
+  return(o)
+}
+
+demand(8,3,2)
+```
+

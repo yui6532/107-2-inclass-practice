@@ -1,0 +1,126 @@
+---
+title: '2019-05-22'
+output: html_document
+---
+
+```{r}
+library(readr)
+invoiceList <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/invoiceList.csv",
+col_types = cols(訂單時間.以訂單時區顯示. = col_character()))
+names(invoiceList)[[2]] <- "訂單時區之下單時間"
+```
+
+```{r}
+
+#請將每個「訂單時區之下單時間」依其「訂單時區」轉成UTC時間date time class（即POSIXct class）後，存在「UTC時間」對應的位置裡。最後一行請打本題答案物件invoiceList。
+
+library(lubridate)
+a <- invoiceList$訂單時區=="Asia/Taipei"
+invoiceList$UTC時間 <- ymd_hms(invoiceList$UTC時間)
+b <- ymd_hms(invoiceList$訂單時區之下單時間[a],tz= "Asia/Taipei")
+invoiceList$UTC時間[a] <-  with_tz(b,tz="UTC")
+
+
+c <- invoiceList$訂單時區=="America/New_York"
+d <- ymd_hms(invoiceList$訂單時區之下單時間[c],tz= "America/New_York")
+
+invoiceList$UTC時間[c] <-  with_tz(d,tz="UTC")
+
+invoiceList
+
+
+
+
+```
+
+```{r}
+(invoiceList$訂單時區 == "America/New_York") -> nyLogical
+(invoiceList$訂單時區 == "Asia/Taipei") -> tpLogical
+
+invoiceList$nyLogical <- nyLogical
+invoiceList$tpLogical <- tpLogical
+
+library(lubridate)
+ymd_hms(invoiceList$訂單時區之下單時間[nyLogical],
+        tz="America/New_York") -> nyDateTime
+
+invoiceList$UTC時間[nyLogical] <- with_tz(nyDateTime,tz="UTC")
+
+ymd_hms(invoiceList$訂單時區之下單時間[tpLogical],
+        tz="Asia/Taipei") -> tpDateTime
+
+invoiceList$UTC時間[tpLogical] <- with_tz(tpDateTime,tz="UTC")
+
+invoiceList
+```
+
+```{r}
+changetz <- function(x,y,z){
+  a <- ymd_hms(x,tz=y)
+  b <- with_tz(a,tz=z)
+  return(b)
+}
+
+changetz("1973-02-21 12:05:22","America/New_York","Asia/Taipei")
+
+```
+
+```{r}
+ymd_hms_tzChange <- function(input,fromTzone,toTzone){
+  time1 <- ymd_hms(input,tz=fromTzone)
+  answer <- with_tz(time1,tzone = toTzone)
+  return(answer)
+}
+ymd_hms_tzChange("1973-02-21 12:05:22","America/New_York","Asia/Taipei")
+```
+
+```{r}
+library(stringr)
+sample(99:103,15,replace = T)-> yy
+sample(1:12,15,replace=T)-> mm
+str_c("民國",str_pad(yy,3,"left","0"),"年",mm,"月") -> twDates
+
+twDates
+?str_pad
+```
+
+```{r}
+library(stringr); library(lubridate)
+yyyy<-as.integer(str_extract(twDates,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(twDates,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
+
+yyyymmdd
+
+?str_extract
+```
+
+```{r}
+date_convert_twYM <- function(x){
+  library(stringr); library(lubridate)
+  yyyy<-as.integer(str_extract(x,"(?<=(民國))[:digit:]+"))+1911
+  mm<-str_extract(x,"[:digit:]+(?=月)")
+  yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
+  return(yyyymmdd)
+}
+
+date_convert_twYM("民國103年9月")
+```
+
+```{r}
+
+date_convert_twYM <- function(x,dd="01"){
+  library(stringr); library(lubridate)
+  yyyy<-as.integer(str_extract(x,"(?<=(民國))[:digit:]+"))+1911
+  mm<-str_extract(x,"[:digit:]+(?=月)")
+  yyyymmdd <- ymd(str_c(yyyy,mm,dd,sep="-"))
+  return(yyyymmdd)
+}
+
+date_convert_twYM("民國103年9月")
+
+```
+
+
+
+

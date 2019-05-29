@@ -91,4 +91,26 @@ if(a==1) {
 
 ```
 
+```{r}
+FizzbuzzFun <- function(fizzbuzz){
+ if(fizzbuzz %% 15 ==0){
+  return("fizzbuzz")
+}
+else if(fizzbuzz %% 5 ==0){
+  return("buzz")
+}
+else if(fizzbuzz %% 3 ==0){
+  return("fizz")
+}
+else{
+  return(fizzbuzz)
+} 
+}
+
+FizzbuzzFun(3)
+FizzbuzzFun(5)
+FizzbuzzFun(15)
+FizzbuzzFun(4)
+```
+
 

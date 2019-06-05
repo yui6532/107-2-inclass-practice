@@ -1,0 +1,43 @@
+---
+title: '2019-06-05'
+output: html_document
+---
+```{r}
+
+utility_cobb_douglass <- function(x,y,.alpha,.beta){
+  utilValue <- x^.alpha*y^.beta # 程序產生output值
+  return(utilValue) # 傳回output值
+}
+
+
+utility_cobb_douglass(1,2,.beta=0.8,.alpha=0.5)
+utility_cobb_douglass(.alpha=0.5,.beta=0.8,x=1,y=2)
+utility_cobb_douglass(.beta=0.8,.alpha=0.5,1,2)
+```
+
+```{r}
+gmailAddress <- c(
+  "tim@gmail.com",
+  "anita",
+  "yellen@gmail.com",
+  "huang@gmail.com"
+)
+```
+
+```{r}
+library(stringr)
+a <- str_detect(gmailAddress,"@gmail.com")
+gmailAddress[!a] <- str_c(gmailAddress[!a],"@gmail.com")
+gmailAddress 
+```
+
+```{r}
+
+```
+
+```{r}
+for(i in seq_along(gmailAddress)){
+  print(gmailAddress[[i]])
+}
+```
+

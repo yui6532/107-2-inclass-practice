@@ -1,0 +1,96 @@
+---
+title: '2019-06-12'
+output: html_document
+---
+
+```{r}
+load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
+studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
+studentIds5 <- studentIds[1:5] # 前5筆學號
+```
+
+```{r}
+gmailAddress <- c(
+  "tim@gmail.com",
+  "anita",
+  "yellen@gmail.com",
+  "huang@gmail.com"
+)
+  
+
+```
+
+```{r}
+for (i in seq_along(gmailAddress)){
+  library(stringr)
+  if(!str_detect(gmailAddress[[i]],"@gmail.com")){
+    gmailAddress[[i]] = str_c(gmailAddress[[i]],"@gmail.com")
+  }
+  print(gmailAddress[[i]])
+}
+```
+
+```{r}
+saveCharacter <- vector("character",5)
+saveCharacter
+
+saveNumeric <- vector("numeric",5)
+saveNumeric
+
+saveLogical <- vector("logical",5)
+saveLogical
+
+saveList <- vector("list",5)
+saveList
+```
+
+```{r}
+load(url("https://www.dropbox.com/s/qnz9paigf61yjus/commitHistory.Rda?raw=1"))
+```
+
+```{r}
+for (i in seq_along(commitHistory)){
+  print(str_c("auther is ",commitHistory[[i]][["commit"]][["author"]][["name"]]," , ","committer is ",commitHistory[[i]][["commit"]][["committer"]][["name"]]))
+}
+```
+
+```{r}
+for (i in seq_along(commitHistory)){
+  print(
+    commitHistory[[i]][["commit"]][["author"]][["name"]] == commitHistory[[i]][["commit"]][["committer"]][["name"]]
+  )
+}
+```
+
+```{r}
+
+auther <- vector("character",length(commitHistory))
+committer <- vector("character",length(commitHistory))
+
+
+for (i in seq_along(commitHistory)){
+  auther[[i]] <- commitHistory[[i]][["commit"]][["author"]][["name"]]
+  committer[[i]] <- commitHistory[[i]][["commit"]][["committer"]][["name"]]
+}
+auther
+committer
+
+```
+
+```{r}
+
+for (i in seq_along(commitHistory)){
+  a <- commitHistory[[i]][["commit"]][["author"]][["name"]] == commitHistory[[i]][["commit"]][["committer"]][["name"]]
+  b <- commitHistory[a]
+}
+commitdate <- vector("character",length(b))
+for (i in seq_along(b)){
+  commitdate[[i]] <- b[[i]][["commit"]][["author"]][["date"]]
+  
+}
+  
+
+
+commitdate
+```
+

@@ -78,10 +78,10 @@ committer
 ```
 
 ```{r}
-
+isSame <-  vector("logical",length(commitHistory))
 for (i in seq_along(commitHistory)){
-  a <- commitHistory[[i]][["commit"]][["author"]][["name"]] == commitHistory[[i]][["commit"]][["committer"]][["name"]]
-  b <- commitHistory[a]
+  isSame[[i]] <- commitHistory[[i]][["commit"]][["author"]][["name"]] == commitHistory[[i]][["commit"]][["committer"]][["name"]]
+  b <- commitHistory[isSame]
 }
 commitdate <- vector("character",length(b))
 for (i in seq_along(b)){
